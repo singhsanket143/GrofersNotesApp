@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Notes</h1>
-
-<table>
+<input type="text" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput" />
+<table class=table>
   <thead>
     <tr>
       <th>Title</th>
@@ -14,9 +14,9 @@
     <% @notes.each do |note| %>
       <tr>
         <td><%= note.title %></td>
-        <td><%= link_to 'Show', note %></td>
-        <td><%= link_to 'Edit', edit_note_path(note) %></td>
-        <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show',note, class: 'btn btn-secondary' %></td>
+        <td><%= link_to 'Edit', edit_note_path(note), class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,5 @@
 
 <br>
 
-<%= link_to 'New Note', new_note_path %>
+<%= link_to 'New Note', new_note_path,  class: 'btn btn-success'%>
+
