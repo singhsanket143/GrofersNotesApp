@@ -1,5 +1,8 @@
 class TagsController < ApplicationController
 
+    def index
+    end     
+
     def get_tag_list
         @tags = Tag.all 
         respond_to do |format|

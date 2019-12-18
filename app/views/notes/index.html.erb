@@ -1,17 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Notes</h1>
+<%= form_tag notes_path, method: 'GET' do %>  
 <div class="row">
-		<div class="col-md-3">
-			<div id="email-html"></div>
-			<input class="form-control" type="hidden" name="emails" id="emails"/>
+    
+		<div class="col-md-12">
+      <div id="email-html"></div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+        <input class="form-control" type="hidden" name="emails" id="emails"/>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-12">
 			<div class="ui-widget">
 			  <input class="form-control" id="tags">  
 			</div>
-		</div>
+    </div>
+    
+    <input type="submit" class="btn btn-success"></input>
+    
 </div>
+<% end %>
   
 <table class=table>
   <thead>
@@ -38,9 +44,23 @@
 <%= link_to 'New Note', new_note_path,  class: 'btn btn-success'%>
 
 <script>
+var selected = [];
+var availableTags = [];
+function removeEmail(email){
+  availableTags.push(email);
+  var i = selected.indexOf(email);
+  selected.splice(i, 1);
+  refreshDiv();
+}
+function refreshDiv(){
+  $("#emails").val(selected.join(','));
+  var email_html = selected.map(function(f, i){
+    return "<span class='btn btn-info btn-sm' style='margin: 3px;'>"+f+"&nbsp;&nbsp; <span onclick=\"removeEmail('"+f+"')\" style='color:red'>x</span></span>";
+  });
+  $("#email-html").html(email_html);
+}
 $(document).ready(function() {
-  var selected = [];
-  var availableTags = [];
+  
    $.ajax({
      url: '/get_tag_list',
      type: 'GET',
@@ -65,21 +85,6 @@ $(document).ready(function() {
           }
         });
       });
-      
-      function refreshDiv(){
-      $("#emails").val(selected.join(','));
-        var email_html = selected.map(function(f, i){
-        return "<span class='btn btn-info btn-sm' style='margin: 3px;'>"+f+"&nbsp;&nbsp; <span onclick=\"removeEmail('"+f+"')\" style='color:red'>x</span></span>";
-      });
-        $("#email-html").html(email_html);
-      }
-      
-      function removeEmail(email){
-        availableTags.push(email);
-        var i = selected.indexOf(email);
-        selected.splice(i, 1);
-        refreshDiv();
-      }
      }, 
      error: function(err) {
        console.log(err);

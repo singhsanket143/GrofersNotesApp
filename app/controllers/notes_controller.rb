@@ -4,7 +4,13 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.all
+    tags = []
+    if params["emails"].present?
+      tags = params["emails"].split(",")
+      @notes = Note.joins('join notes_tags on notes.id = notes_tags.note_id').where('notes_tags.tag_id in (?)', tags)
+    else
+      @notes = Note.all
+    end
   end
 
   # GET /notes/1
