@@ -18,6 +18,18 @@
     </div>
   </div>
 
+  <div class="field form-group">
+  <%= form.label 'Tags', class: 'col-sm-2 control-label' %>
+    <div class="col-md-12">
+      <div id="email-html"></div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+      <input class="form-control" type="hidden" name="tags" id="emails"/>
+		</div>
+		<div class="col-md-12">
+			<div class="ui-widget">
+			  <input class="form-control" id="tags">  
+			</div>
+    </div>
+  </div>
 
   <div class="field form-group">
     <%= form.label :content , class: 'col-sm-2 control-label' %>
@@ -32,5 +44,3 @@
     </div>
   </div>
 <% end %>
-
-

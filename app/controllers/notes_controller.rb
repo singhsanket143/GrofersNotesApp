@@ -5,8 +5,8 @@ class NotesController < ApplicationController
   # GET /notes.json
   def index
     tags = []
-    if params["emails"].present?
-      tags = params["emails"].split(",")
+    if params["tags"].present?
+      tags = params["tags"].split(",")
       @notes = Note.joins('join notes_tags on notes.id = notes_tags.note_id').where('notes_tags.tag_id in (?)',Tag.all.where('name in (?)', tags).select(:id)).uniq
     else
       @notes = Note.all
@@ -31,7 +31,10 @@ class NotesController < ApplicationController
   # POST /notes.json
   def create
     @note = Note.new(note_params)
-
+    if params["tags"].present?
+      tags = params["tags"].split(",")
+      @note.tags = Tag.all.where('name in (?)', tags)
+    end
     respond_to do |format|
       if @note.save
         format.html { redirect_to @note, notice: 'Note was successfully created.' }
@@ -48,6 +51,10 @@ class NotesController < ApplicationController
   def update
     respond_to do |format|
       if @note.update(note_params)
+        if params["tags"].present?
+          tags = params["tags"].split(",")
+          @note.tags = Tag.all.where('name in (?)', tags)
+        end
         format.html { redirect_to @note, notice: 'Note was successfully updated.' }
         format.json { render :show, status: :ok, location: @note }
       else
