@@ -7,7 +7,7 @@ class NotesController < ApplicationController
     tags = []
     if params["emails"].present?
       tags = params["emails"].split(",")
-      @notes = Note.joins('join notes_tags on notes.id = notes_tags.note_id').where('notes_tags.tag_id in (?)', tags)
+      @notes = Note.joins('join notes_tags on notes.id = notes_tags.note_id').where('notes_tags.tag_id in (?)',Tag.all.where('name in (?)', tags).select(:id)).uniq
     else
       @notes = Note.all
     end
