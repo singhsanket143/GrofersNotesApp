@@ -84,3 +84,8 @@ Click yes on the pop up and the selected note will be deleted.
 Eg: Lets delete the note new year plans. 
 
 ![Screenshot 2019-12-20 at 2 59 13 AM](https://user-images.githubusercontent.com/35702912/71211304-dfb7d780-22d4-11ea-99ab-3c1fb52c3e89.png)
+
+### Display a Note:
+To view a particular note, click on the button show. 
+
+![Screenshot 2019-12-20 at 3 08 15 AM](https://user-images.githubusercontent.com/35702912/71211901-26f29800-22d6-11ea-9ff6-2020b44e7d64.png)
