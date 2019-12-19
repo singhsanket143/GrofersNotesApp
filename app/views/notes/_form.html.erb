@@ -1,6 +1,9 @@
 <%= form_with(model: note, local: true) do |form| %>
+
   <% if note.errors.any? %>
+  <div class="alert alert-danger" role="alert">
     <div id="error_explanation">
+    
       <h2><%= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h2>
 
       <ul>
@@ -9,12 +12,13 @@
       <% end %>
       </ul>
     </div>
+  </div>
   <% end %>
 
   <div class="field form-group">
     <%= form.label :title, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <%= form.text_field :title, id: :note_title, class: 'form-control' %>
+      <%= form.text_field :title, id: :note_title, class: 'form-control', placeholder: 'Enter title of the note' %>
     </div>
   </div>
 
@@ -22,19 +26,17 @@
   <%= form.label 'Tags', class: 'col-sm-2 control-label' %>
     <div class="col-md-12">
       <div id="email-html"></div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
-      <input class="form-control" type="hidden" name="tags" id="emails"/>
+      <input class="form-control" type="hidden" name= "tags" id="emails"/>
 		</div>
-		<div class="col-md-12">
-			<div class="ui-widget">
-			  <input class="form-control" id="tags">  
-			</div>
+		<div class="col-md-10">
+        <input class="form-control" id="tags", placeholder= 'Enter tags'> 
     </div>
   </div>
 
   <div class="field form-group">
     <%= form.label :content , class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <%= form.text_area :content, id: :note_content, class: 'form-control' %>
+      <%= form.text_area :content, id: :note_content, class: 'form-control', placeholder: 'Enter title of the note' %>
     </div>
   </div>
 

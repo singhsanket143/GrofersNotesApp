@@ -1,15 +1,22 @@
-<p id="notice"><%= notice %></p>
+
+<% if notice.present? %>
+<div class="alert alert-success" role="alert">
+  <%= notice %>
+</div>
+<% end %>
 
 <p>
-  <strong>Title:</strong>
+  <h3><strong>Title</strong></h3>
   <%= @note.title %>
-  
 </p>
 
 <p>
-  <strong>Notes:</strong>
+  <h3><strong>Content</strong></h3>
   <%= @note.content %>
 </p>
 
-<%= link_to 'Edit', edit_note_path(@note) %> |
-<%= link_to 'Back', notes_path %>
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= link_to 'Edit', edit_note_path(@note), class: 'btn btn-warning' %> 
+  <%= link_to 'Back', notes_path,  class: 'btn btn-warning' %>
+</div>
+

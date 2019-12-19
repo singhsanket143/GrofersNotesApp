@@ -33,7 +33,7 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
     if params["tags"].present?
       tags = params["tags"].split(",")
-      @note.tags = Tag.all.where('name in (?)', tags)
+      @note.tags << Tag.all.where('name in (?)', tags)
     end
     respond_to do |format|
       if @note.save
@@ -53,7 +53,7 @@ class NotesController < ApplicationController
       if @note.update(note_params)
         if params["tags"].present?
           tags = params["tags"].split(",")
-          @note.tags = Tag.all.where('name in (?)', tags)
+          @note.tags << Tag.all.where('name in (?)', tags)
         end
         format.html { redirect_to @note, notice: 'Note was successfully updated.' }
         format.json { render :show, status: :ok, location: @note }
@@ -82,6 +82,6 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:title)
+      params.require(:note).permit(:title, :content)
     end
 end

@@ -1,13 +1,9 @@
 
-<ul class="nav nav-pills" role="tablist">
-  <li><%= link_to 'View list', notes_path %></li>
- 
-</ul>
-<h1>New Note</h1>
 
+
+<h1><center>New Note</h1>
 <%= render 'form', note: @note %>
 
-<%= link_to 'Back', notes_path %>
 <script>
 $(document).ready(function() {
     var selected = [];

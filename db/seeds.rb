@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+custom_tags = ['Urgent', 'Escalated', 'Easy', 'High priority', 'Low priority', 'Completed', 'Pending', 'Delayed', 'Low Risk', 'Casual']
+
+custom_tags.each do |tag|
+    Tag.create(name: tag)
+end
