@@ -19,6 +19,7 @@ The app is built using Ruby on Rails.
 - Awesome Landing Page
 - Markdown Support
 - Information about note creation and last updation
+
 ## Requirements
 
 - Google Chrome or Firefox browser
@@ -89,3 +90,7 @@ Eg: Lets delete the note new year plans.
 To view a particular note, click on the button show. 
 
 ![Screenshot 2019-12-20 at 3 08 15 AM](https://user-images.githubusercontent.com/35702912/71211901-26f29800-22d6-11ea-9ff6-2020b44e7d64.png)
+
+### User Authentication
+
+![Screenshot 2019-12-20 at 3 10 45 AM](https://user-images.githubusercontent.com/35702912/71212031-7d5fd680-22d6-11ea-92ae-f20aa857b19c.png)
